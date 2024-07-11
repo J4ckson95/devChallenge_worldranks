@@ -1,0 +1,11 @@
+.Head {
+    position: relative;
+    border: 1px solid red;
+
+    .Logo_title {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
