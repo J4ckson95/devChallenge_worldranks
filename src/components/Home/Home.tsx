@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from "react";
 import search from "../../assets/Search.svg"
 import { Country } from "../../vite-env";
+import CountrysRow from "../CountrysRow/CountrysRow";
 const Home: React.FC = () =>{
     const [data,setData] = useState<Country[]>([])
     const [searchTerm,setSearchTerm] = useState("")
@@ -13,9 +14,15 @@ const Home: React.FC = () =>{
         }
         getData()
     },[])
-    useEffect(()=>{
-
-    },[searchTerm])
+    if(sortBy){
+        switch(sortBy){
+            case "population":
+                console.log("Entro");
+                break;
+            case "alfabetico":
+                console.log("Entro2");
+        }
+    }
     return(
         <main>
             <h3>{data && `Found ${data.length} Countrys`}</h3>
@@ -51,6 +58,9 @@ const Home: React.FC = () =>{
                             <th>Region</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        {data && data.map((elements,index)=> <CountrysRow key={index} data={elements}></CountrysRow>)}
+                    </tbody>
                 </table>
             </div>
         </main>
