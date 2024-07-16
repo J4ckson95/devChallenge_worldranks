@@ -2,6 +2,7 @@ import React,{useState, useEffect} from "react";
 import search from "../../assets/Search.svg"
 import { Country } from "../../vite-env";
 import CountrysRow from "../CountrysRow/CountrysRow";
+import style from "./home.module.css"
 const Home: React.FC = () =>{
     const [data,setData] = useState<Country[]>([])
     const [searchTerm,setSearchTerm] = useState("")
@@ -17,14 +18,19 @@ const Home: React.FC = () =>{
     if(sortBy){
         switch(sortBy){
             case "population":
-                console.log("Entro");
+                data.sort((a,b)=> b.population - a.population)
                 break;
             case "alfabetico":
-                console.log("Entro2");
+                data.sort((a,b)=>{
+                    if(a.name.official < b.name.official) return -1
+                    if(a.name.official > b.name.official) return 1
+                    return 0
+                })
+                break;
         }
     }
     return(
-        <main>
+        <main className={style}>
             <h3>{data && `Found ${data.length} Countrys`}</h3>
             <div>
                 <input type="text" placeholder="Search by Name, Region, Subregion" value={searchTerm} onChange={(e)=>{setSearchTerm(e.target.value)}}></input>
