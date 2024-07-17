@@ -1,20 +1,43 @@
 .main {
+    width: 95vw;
+    margin-inline: auto;
+    padding: 2rem;
+    position: relative;
+    top: -8vh;
     display: grid;
     grid-template-areas:
         "head head head"
         "filter content content"
         "filter content content";
     color: var(--Color4);
+    gap: 10px;
+    border-radius: 20px;
+    background-color: var(--Color2);
 }
 
 .head {
-    grid-area: "head";
+    grid-area: head;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 5vh;
+
+    h3 {
+        position: absolute;
+        left: 0;
+    }
+
+    div {
+        position: absolute;
+        right: 0;
+    }
+
 }
 
 .filter {
-    grid-area: "filter";
+    grid-area: filter;
 }
 
 .content {
-    grid-area: "content";
+    grid-area: content;
 }
