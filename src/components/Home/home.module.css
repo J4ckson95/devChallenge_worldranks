@@ -1,3 +1,20 @@
-main {
+.main {
+    display: grid;
+    grid-template-areas:
+        "head head head"
+        "filter content content"
+        "filter content content";
     color: var(--Color4);
+}
+
+.head {
+    grid-area: "head";
+}
+
+.filter {
+    grid-area: "filter";
+}
+
+.content {
+    grid-area: "content";
 }
